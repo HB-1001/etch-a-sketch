@@ -9,7 +9,6 @@ const gridInput = document.body.querySelector(".gridInput");
 let i = "";
 let x = "";
 
-
 //creating grids using loop
 const gridsetup = function () {
   for (i = 0; i <= x - 1; i++) {
@@ -21,7 +20,7 @@ const gridsetup = function () {
 };
 
 //color of mouseover
-let mouseoverColor = "black";
+let mouseoverColor = "red";
 
 // eventlistener for hover/mouseover
 // const mouseOver not working because it was using old grids Array, which was erased -
