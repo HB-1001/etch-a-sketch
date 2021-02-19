@@ -22,7 +22,7 @@ gridsetup();
 let mouseoverColor = "black";
 
 // eventlistener for hover/mouseover
-// const mouseOver not working because it was using old grids Array, which was erased
+// const mouseOver not working because it was using old grids Array, which was erased - can we make this a function?
 let grids = document.body.querySelectorAll(".grid");
 grids.forEach((item) =>
   item.addEventListener("mouseover", function (e) {
@@ -30,18 +30,38 @@ grids.forEach((item) =>
   })
 );
 
-// trial button 8x8, to make grid into 8 / try repeat 100% to fill whole box
-eightEightButton = document.body.querySelector(".eightEight");
-eightEightButton.addEventListener("click", function (e) {
-  grids.forEach((item, index, object) => item.parentNode.removeChild(item));
-  gridContainer.style.gridTemplateColumns = `repeat(8, 20px)`;
-  gridContainer.style.gridTemplateRows = "repeat(8, 20px)";
-  x = 8 * 8;
-  gridsetup();
-  grids = document.body.querySelectorAll(".grid");
-  grids.forEach((item) =>
-    item.addEventListener("mouseover", function (e) {
-      e.target.style.backgroundColor = mouseoverColor;
-    })
-  );
-});
+// canvas size buttons / try repeat 100% to fill whole box
+const gridDimension = document.body.querySelectorAll(".canvasSize");
+gridDimension.forEach((canvas) =>
+  canvas.addEventListener("click", function (e) {
+    grids.forEach((item, index, object) => item.parentNode.removeChild(item));
+    gridContainer.style.gridTemplateColumns = `repeat(${e.target.id}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${e.target.id}, 1fr)`;
+    x = `${e.target.id * e.target.id}`;
+    gridsetup();
+    grids = document.body.querySelectorAll(".grid");
+    grids.forEach((item) =>
+      item.addEventListener("mouseover", function (e) {
+        e.target.style.backgroundColor = mouseoverColor;
+      })
+    );
+  })
+);
+
+// //Cleanup, erase all button
+let cleaner = document.body.querySelector('.cleanUp')
+cleaner.addEventListener('click', function(e) {
+  grids.forEach(item => item.style.backgroundColor="white");
+})
+
+// //user prompt for grid size
+// prompt/input launches function :
+// grids.forEach((item, index, object) => item.parentNode.removeChild(item));
+// gridContainer.style.gridTemplateColumns = `repeat(${e.target.id}, 1fr)`;
+// gridContainer.style.gridTemplateRows = `repeat(${e.target.id}, 1fr)`;
+// x = `${e.target.id * e.target.id}`;
+// gridsetup();
+// grids = document.body.querySelectorAll(".grid");
+// grids.forEach((item) =>
+//   item.addEventListener("mouseover", function (e) {
+//     e.target.style.backgroundColor = mouseoverColor;

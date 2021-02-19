@@ -1,21 +1,11 @@
-/* master container */
-/* .bigBoss {
-    height: 500px;
-    width: 500px;
-    background-color: firebrick;
-    overflow: hidden;
-} */
-
 /* grid container */
 .container {
+  margin: auto;
   display: grid;
-  overflow: auto;
-  max-width: 20%;
-  max-height: 20%;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(16, 1fr);
-  justify-content: center;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border: green;
   background-color: transparent;
   flex-wrap: wrap;
