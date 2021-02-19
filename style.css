@@ -22,3 +22,12 @@
 .grid:hover {
   background-color: black;
 }
+
+/* span for italic */
+.italic {
+  font-style: italic;
+}
+
+/* grid */
+
+
