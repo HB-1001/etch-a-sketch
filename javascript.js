@@ -87,6 +87,7 @@ coloredBtn.forEach((item) => {
 // button event listener ;; incl. eraser button
 coloredBtn.forEach((btn) => {
   btn.addEventListener("click", function (e) {
+    colorfulBtn.style.borderColor = "";
     grids = document.body.querySelectorAll(".grid");
     grids.forEach((item) =>
       item.addEventListener("mouseover", function (e) {
@@ -94,14 +95,46 @@ coloredBtn.forEach((btn) => {
         e.target.style.backgroundColor = mouseoverColor;
         coloredBtn.forEach((item) => {
           item.style.borderColor = "";
+
         });
         btn.style.backgroundColor = mouseoverColor;
-        btn.style.borderColor= btn.dataset.bdr; 
+        btn.style.borderColor = btn.dataset.bdr;
       })
     );
   });
 });
 
 // set red button border at start
-redBtn = document.body.querySelector("#red")
-redBtn.style.borderColor="rgba(255,255,255,1)";
+redBtn = document.body.querySelector("#red");
+redBtn.style.borderColor = "rgba(255,255,255,1)";
+
+// random color generator using  hsl code (0-360,%,%) (HSL)
+// H
+let h = function (number) {
+  return Math.floor(Math.random() * number);
+};
+//S
+let s = (number) => {
+  return Math.floor(Math.random() * 100);
+};
+// L
+let l = (number) => {
+  return Math.floor(Math.random() * 100);
+};
+
+test = () => `hsl(${h(360)},${s()}%,${l()}%)`;
+
+// rainbow btn
+let colorfulBtn = document.body.querySelector(".rainbowBtn");
+colorfulBtn.addEventListener("click", function (e) {
+    colorfulBtn.style.borderColor = "black";
+  grids = document.body.querySelectorAll(".grid");
+  grids.forEach((item) =>
+    item.addEventListener("mouseover", function (e) {
+      e.target.style.backgroundColor = `hsl(${h(360)},${s()}%,${l()}%)`;
+      coloredBtn.forEach((item) => {
+        item.style.borderColor = "";
+      });
+    })
+  );
+});
