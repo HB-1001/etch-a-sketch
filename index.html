@@ -5,16 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet"> 
     <title>Etch-A-Sketch</title>
   </head>
   <body>
+    <div class="bodyContainer">
+      <div class="item-header">Etch-A-Sketch</div>
+      <div class="item-main">
     <div class="container"></div>
+  </div>
+    <div class="item-sidebar">
+    <div class="size">Size
     <button class="canvasSize" id="8">8x8</button>
     <button class="canvasSize" id="16">16x16</button>
     <button class="canvasSize" id="32">32x32</button>
-    <button class="cleanUp">Erase All</button>
-    <label for="gridInput"> Grid Size <span class="italic">(x*x)</span>
-    <input class="gridInput" type="number" min="1" max="100"></input>
+  </div>
+<div class="inputclass">
+    <label for="gridInput"> Grid Size <span class="italic">(y&#215;y)</span>
+    <input class="gridInput" type="number" min="1" max="100" placeholder="Select Grid Number"></input></div>
+
+     <div class="coloredBtns"> Pen Color
+<button class="coloredBtn" id="red" data-id="red" data-hover="white" data-bdr="rgba(255,255,255,1)">Red</button>
+<button class="coloredBtn" id="black" data-id="black" data-hover="white" data-bdr="rgba(255,255,255,1)" >Black</button>
+<button class="coloredBtn" id="blue" data-id="blue" data-hover="white" data-bdr="rgba(255,255,255,1)">Blue</button>
+
+<div class="cleanUpBtn"><button class="coloredBtn" id="white" data-id="white" data-hover="black" data-bdr="black">Eraser</button>
+  <button class="cleanUp">Erase All</button></div>
+     </div> 
+
+  </div>
+  <div class="item-footer"> HB10
+<footer>
+</footer>
+</div>
+  </div>
   </label>
         <script src="javascript.js"></script>
   </body>

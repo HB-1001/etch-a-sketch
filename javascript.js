@@ -7,7 +7,11 @@ const gridInput = document.body.querySelector(".gridInput");
 
 // defining i as a global scope for it to be accessible by buttons
 let i = "";
-let x = "";
+let x = "256";
+
+let startValue = 16;
+const startInput = () => (gridInput.value = startValue);
+startInput();
 
 //creating grids using loop
 const gridsetup = function () {
@@ -18,6 +22,7 @@ const gridsetup = function () {
     gridContainer.appendChild(gridBox);
   }
 };
+gridsetup();
 
 //color of mouseover
 let mouseoverColor = "red";
@@ -25,6 +30,7 @@ let mouseoverColor = "red";
 // eventlistener for hover/mouseover
 // const mouseOver not working because it was using old grids Array, which was erased -
 let grids = document.body.querySelectorAll(".grid");
+4;
 let colorizer = function () {
   grids = document.body.querySelectorAll(".grid");
   grids.forEach((item) =>
@@ -33,6 +39,7 @@ let colorizer = function () {
     })
   );
 };
+colorizer();
 
 // canvas size buttons / try repeat 100% to fill whole box
 const gridDimension = document.body.querySelectorAll(".canvasSize");
@@ -59,7 +66,42 @@ gridInput.addEventListener("change", function (e) {
   colorizer();
 });
 
-let startValue = 16;
-const startGrid = () => (gridInput.value = startValue);
-gridInput.dispatchEvent(new Event("change"));
-startGrid();
+// single eraser button
+let sglEraser = document.body.querySelector(".eraser");
+
+// button set-up - style
+let coloredBtn = document.body.querySelectorAll(".coloredBtn");
+coloredBtn.forEach((item) => {
+  item.style.backgroundColor = item.dataset.id;
+  item.style.Color = item.dataset.hover;
+  item.addEventListener("mouseover", function (e) {
+    item.style.backgroundColor = item.dataset.id;
+    item.style.color = item.dataset.hover;
+    item.addEventListener("mouseout", function (e) {
+      item.style.backgroundColor = item.dataset.id;
+      item.style.Color = "black";
+    });
+  });
+});
+
+// button event listener ;; incl. eraser button
+coloredBtn.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    grids = document.body.querySelectorAll(".grid");
+    grids.forEach((item) =>
+      item.addEventListener("mouseover", function (e) {
+        mouseoverColor = btn.id;
+        e.target.style.backgroundColor = mouseoverColor;
+        coloredBtn.forEach((item) => {
+          item.style.borderColor = "";
+        });
+        btn.style.backgroundColor = mouseoverColor;
+        btn.style.borderColor= btn.dataset.bdr; 
+      })
+    );
+  });
+});
+
+// set red button border at start
+redBtn = document.body.querySelector("#red")
+redBtn.style.borderColor="rgba(255,255,255,1)";
